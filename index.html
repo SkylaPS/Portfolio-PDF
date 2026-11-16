@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Product design portfolio and résumé of Paarthivi Sirbhaiya.">
+<meta property="og:title" content="Paarthivi Sirbhaiya Portfolio">
+<meta property="og:description" content="Product design portfolio and résumé of Paarthivi Sirbhaiya.">
+<meta property="og:image" content="/pages/01-intro-1.jpg">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Paarthivi Sirbhaiya Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,400..500&family=Inter:wght@400..600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout: the same paper-on-linen world as the Portfolio Cover and Résumé —
+     a short header, a sticky section index, then every portfolio page stacked
+     as a printed sheet. Deliberately single-theme, like a physical portfolio. */
+  :root {
+    --ink: #14140f;
+    --ink-soft: #45443c;
+    --ink-faint: #8a887c;
+    --paper: #f6f2ea;
+    --sage: #7a8b76;
+    --sage-deep: #4a5947;
+    --sage-pale: #e6ebe3;
+    --line: rgba(20, 20, 15, 0.14);
+    --backdrop: #ffffff;
+
+    --font-display: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'IBM Plex Mono', 'SFMono-Regular', ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    background: var(--backdrop);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: clamp(28px, 5vw, 56px) 64px;
+  }
+
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(20px, 3vw, 32px);
+  }
+
+  /* ---------- Header ---------- */
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 18px 32px;
+  }
+
+  .head-main { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sage);
+    box-shadow: 0 0 0 4px var(--sage-pale);
+    flex-shrink: 0;
+  }
+
+  .name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 380;
+    font-size: clamp(38px, 6vw, 60px);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  .tagline {
+    margin: 0;
+    max-width: 52ch;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .head-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .mono {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .head-meta a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .head-meta a:hover { border-bottom-color: var(--sage-deep); }
+  .email { user-select: all; }
+
+  /* ---------- Portfolio / Résumé switch ---------- */
+  /* A segmented switch: a sage track with a paper thumb that slides
+     under whichever view is open. */
+  .name-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px clamp(20px, 3vw, 36px);
+  }
+
+  .tabs {
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+    padding: 5px;
+    gap: 4px;
+    border-radius: 999px;
+    background: var(--sage-pale);
+    box-shadow: inset 0 0 0 1px rgba(74, 89, 71, 0.14);
+  }
+
+  .thumb {
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 0;
+    width: 0;
+    border-radius: 999px;
+    background: var(--sage-deep);
+    box-shadow: 0 6px 16px -6px rgba(74, 89, 71, 0.55);
+    transition: transform 0.35s cubic-bezier(.3,.7,.2,1), width 0.35s cubic-bezier(.3,.7,.2,1);
+  }
+
+  .tab {
+    position: relative;
+    z-index: 1;
+    appearance: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 12px 24px 13px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--sage-deep);
+    transition: color 0.25s;
+  }
+  .tab-name {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 420;
+    font-style: italic;
+    letter-spacing: -0.005em;
+  }
+  .tab-meta {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+  .tab:hover:not([aria-selected="true"]) { color: var(--ink); }
+  .tab:focus-visible { outline: 2px solid var(--sage-deep); outline-offset: 2px; }
+  .tab[aria-selected="true"] { color: #fff; }
+  .tab[aria-selected="true"] .tab-meta { opacity: 0.75; }
+
+  @media (prefers-reduced-motion: reduce) { .thumb { transition: none; } }
+  @media (max-width: 420px) { .tab { padding-inline: 18px; } .tab-name { font-size: 17px; } }
+
+  .view { display: flex; flex-direction: column; gap: clamp(20px, 3vw, 32px); }
+
+  .sheet.resume-sheet {
+    aspect-ratio: 1656 / 2339;
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Section index ---------- */
+  .index {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 5;
+    margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+    padding: 10px max(16px, env(safe-area-inset-left, 0px));
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .index-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .index-inner::-webkit-scrollbar { display: none; }
+
+  .chip {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 7px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .chip .n { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-faint); }
+  .chip:hover { border-color: var(--line); color: var(--ink); }
+  .chip:focus-visible { outline: 2px solid var(--sage-deep); outline-offset: 2px; }
+  .chip.on { background: var(--sage-pale); border-color: transparent; color: var(--sage-deep); }
+  .chip.on .n { color: var(--sage); }
+
+  /* ---------- Sections and sheets ---------- */
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 72px);
+  }
+
+  .section-label {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin: 18px 0 0;
+  }
+  .section-label h2 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+    align-self: center;
+  }
+
+  .sheet {
+    margin: 0;
+    background: #fff;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    box-shadow: 0 18px 44px -24px rgba(20, 20, 15, 0.22);
+    aspect-ratio: 16 / 9;
+    max-width: 100%;
+  }
+  .sheet img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  .foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 20px;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+
+  @media (max-width: 640px) {
+    .head-meta { align-items: flex-start; }
+    .section-label h2 { font-size: 19px; }
+    .section { gap: 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="head">
+    <div class="head-main">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Product Designer · Portfolio</p>
+      <div class="name-row">
+        <h1 class="name">Paarthivi Sirbhaiya</h1>
+        <div class="tabs" role="tablist" aria-label="View">
+          <span class="thumb" id="thumb" aria-hidden="true"></span>
+          <button class="tab" id="tab-portfolio" role="tab" aria-controls="view-portfolio" aria-selected="true" type="button">
+            <span class="tab-name">Portfolio</span><span class="tab-meta">44 pp</span>
+          </button>
+          <button class="tab" id="tab-resume" role="tab" aria-controls="view-resume" aria-selected="false" type="button">
+            <span class="tab-name">Résumé</span><span class="tab-meta">A4</span>
+          </button>
+        </div>
+      </div>
+      <p class="tagline">Product design, with growing interests at the intersection of design engineering, research, technology, and making.</p>
+    </div>
+    <div class="head-meta">
+      <span class="mono">2023 — 2026 · 44 pages</span>
+      <span class="email">paarthi.sirbhaiya@gmail.com</span>
+      <a href="https://www.linkedin.com/in/paarthivi-sirbhaiya-276a80246" target="_blank" rel="noopener">linkedin.com/in/paarthivi-sirbhaiya</a>
+    </div>
+  </header>
+
+  <div class="view" id="view-portfolio" role="tabpanel" aria-labelledby="tab-portfolio">
+    <nav class="index" aria-label="Portfolio sections">
+      <div class="index-inner" id="index"></div>
+    </nav>
+
+    <main id="sections"></main>
+  </div>
+
+  <div class="view" id="view-resume" role="tabpanel" aria-labelledby="tab-resume" hidden>
+    <figure class="sheet resume-sheet">
+      <img src="pages/resume-1.png" alt="Paarthivi Sirbhaiya résumé, September 2026" width="1656" height="2339" loading="lazy" decoding="async">
+    </figure>
+  </div>
+
+  <footer class="foot">
+    <span class="mono">Paarthivi Sirbhaiya · Product Designer</span>
+    <span class="mono">Ahmedabad, India</span>
+  </footer>
+</div>
+
+<script>
+  var SECTIONS = [
+    { id: 'intro',       title: 'Intro',       file: '01-intro',       pages: 3 },
+    { id: 'hydrajet',    title: 'HydraJet',    file: '02-hydrajet',    pages: 9 },
+    { id: 'know-my-day', title: 'Know My Day', file: '03-know-my-day', pages: 9 },
+    { id: 'mamaease',    title: 'MamaEase',    file: '04-mamaease',    pages: 9 },
+    { id: 'aura',        title: 'Aura',        file: '05-aura',        pages: 6 },
+    { id: 'iris',        title: 'IRIS',        file: '06-iris',        pages: 7 },
+    { id: 'contact',     title: 'Contact',     file: '07-last-page',   pages: 1 }
+  ];
+
+  var index = document.getElementById('index');
+  var main = document.getElementById('sections');
+  var chips = {};
+  var first = true;
+
+  SECTIONS.forEach(function (s, i) {
+    var num = String(i + 1).padStart(2, '0');
+
+    var chip = document.createElement('a');
+    chip.className = 'chip';
+    chip.href = '#' + s.id;
+    chip.innerHTML = '<span class="n">' + num + '</span>' + s.title;
+    index.appendChild(chip);
+    chips[s.id] = chip;
+
+    var sec = document.createElement('section');
+    sec.className = 'section';
+    sec.id = s.id;
+    sec.innerHTML =
+      '<div class="section-label"><span class="mono">' + num + '</span><h2>' + s.title +
+      '</h2><span class="mono">' + s.pages + (s.pages === 1 ? ' page' : ' pages') + '</span></div>';
+
+    for (var p = 1; p <= s.pages; p++) {
+      var fig = document.createElement('figure');
+      fig.className = 'sheet';
+      var img = document.createElement('img');
+      img.src = 'pages/' + s.file + '-' + p + '.jpg';
+      img.alt = s.title + ', page ' + p + ' of ' + s.pages;
+      img.width = 2000;
+      img.height = 1125;
+      img.decoding = 'async';
+      if (!first) img.loading = 'lazy';
+      first = false;
+      fig.appendChild(img);
+      sec.appendChild(fig);
+    }
+    main.appendChild(sec);
+  });
+
+  // Highlight the section currently in view.
+  function setActive(id) {
+    Object.keys(chips).forEach(function (k) { chips[k].classList.toggle('on', k === id); });
+    var c = chips[id];
+    if (c && c.scrollIntoView) {
+      var row = index, left = c.offsetLeft - row.clientWidth / 2 + c.clientWidth / 2;
+      row.scrollTo({ left: left, behavior: 'smooth' });
+    }
+  }
+  setActive(SECTIONS[0].id);
+
+  // Portfolio / Résumé switch. #resume in the link opens the résumé directly.
+  var views = { portfolio: document.getElementById('view-portfolio'), resume: document.getElementById('view-resume') };
+  var tabs = { portfolio: document.getElementById('tab-portfolio'), resume: document.getElementById('tab-resume') };
+
+  var thumb = document.getElementById('thumb');
+  var current = 'portfolio';
+  function placeThumb() {
+    var t = tabs[current];
+    thumb.style.width = t.offsetWidth + 'px';
+    thumb.style.transform = 'translateX(' + t.offsetLeft + 'px)';
+  }
+
+  function showView(name, scroll) {
+    current = name;
+    Object.keys(views).forEach(function (k) {
+      views[k].hidden = k !== name;
+      tabs[k].setAttribute('aria-selected', String(k === name));
+    });
+    placeThumb();
+    if (scroll) tabs[name].scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
+  tabs.portfolio.addEventListener('click', function () { showView('portfolio', false); });
+  tabs.resume.addEventListener('click', function () { showView('resume', false); });
+  if (location.hash === '#resume') showView('resume', true); else placeThumb();
+  window.addEventListener('resize', placeThumb);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeThumb);
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin: '-35% 0px -60% 0px' });
+    document.querySelectorAll('.section').forEach(function (el) { io.observe(el); });
+  }
+</script>
+</body>
+</html>
